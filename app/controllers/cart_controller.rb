@@ -1,5 +1,7 @@
 class CartController < ApplicationController
   
+  before_action :authenticate_user!
+  
     def index
     
       # build logic to pass the cart data to the view

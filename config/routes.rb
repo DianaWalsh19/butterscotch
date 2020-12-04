@@ -1,6 +1,9 @@
   
 Rails.application.routes.draw do
   
+  devise_for :users
+  
+  
   resources :items
   root 'static_pages#home'
 
@@ -31,6 +34,8 @@ Rails.application.routes.draw do
   get '/done' => 'cart#done'
   
   get 'cart/index'
+  
+  root :to => 'site#home'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

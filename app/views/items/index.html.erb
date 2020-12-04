@@ -19,8 +19,9 @@
         Brand: <%= item.brand %></p>
        
        <p>
-        <% if session[:login] == 1%>
+        
          <a href="/cart/<%= item.id %>" class="button">Add To Cart</a>
+         <% if user_signed_in? %>
          <%= link_to 'Show',  item, :class => "button", :role => "button" %>
          <%= link_to 'Edit',  edit_item_path(item), :class => "button", :role => "button" %>
          <%= link_to 'Destroy',  item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button", :role => "button" %>
@@ -37,5 +38,6 @@
       
    </div>
 
-  <br>
-<%= link_to 'New Item',  new_item_path, :class => "button", :role => "button" %>
+<% if session[:login] == 1%>
+ <%= render '/items/addProduct' %>
+<% end %>

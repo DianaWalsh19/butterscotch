@@ -13,7 +13,20 @@
     <%= render '/layouts/header' %>
     
     <div class="container">
-      <%= yield %>
+      <div class='content'>
+        <p class='notice'><%= flash[:notice] %></p>
+        <%= yield %>  
+      </div>
+      
+      <div id='first-column'>
+        <div class="loginbox">
+          <h2 class="BoxHeaders">Login</h2>
+        </div>
+        
+        <div class="searchbox">
+          <h2 class="BoxHeaders">Search products</h2>
+        </div>
+      </div>
     </div>
     
     <%= render '/layouts/footer' %>
