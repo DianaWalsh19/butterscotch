@@ -1,3 +1,4 @@
+  
 Rails.application.routes.draw do
   
   resources :items
@@ -8,6 +9,11 @@ Rails.application.routes.draw do
   get '/contact' => 'static_pages#contact'
   
   get '/products' => 'items#index'
+  
+  get '/login' => 'user#login' 
+  
+  get '/logout' => 'user#logout'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

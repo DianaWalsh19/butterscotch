@@ -9,25 +9,16 @@
   </head>
 
   <body>
-    <header class="headSec">
-        <h1>Butterscotch</h1>
-        <ul>
-          <li><%= link_to "Home",  "/" %></li>
-          <li><%= link_to "Products",  "/products" %></li>
-          <li><%= link_to "Categories",  "/categories" %></li>
-          <li><%= link_to "Users",  "/users" %></li>
-          <li><%= link_to "Suppliers",  "/suppliers" %></li>
-          <li><%= link_to "About Us", "/about" %></li>
-          <li><%= link_to "Contact Us", "/contact" %></li>
-        </ul>
-      </header>
   
-      <div class="container">
+    <%= render '/layouts/header' %>
+    
+    <div class="container">
       <%= yield %>
-      </div>
-  <footer class="foot">
-  <h1>Thank you for browsing</h1>
-  </footer>
+    </div>
+    
+    <footer class="foot">
+      <h1>Thank you for browsing</h1>
+    </footer>
 
   </body>
 </html>
