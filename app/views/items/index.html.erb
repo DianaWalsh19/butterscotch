@@ -38,6 +38,6 @@
       
    </div>
 
-<% if session[:login] == 1%>
+<% if user_signed_in? %>
  <%= render '/items/addProduct' %>
 <% end %>

@@ -1,8 +1,17 @@
   
 Rails.application.routes.draw do
   
-  devise_for :users
+  resources :orders do 
+    resources:orderitems
+  end
   
+  devise_for :users do 
+    resources :orders 
+  end
+  
+  get '/checkout' => 'cart#createOrder'
+  
+  get '/cart' => 'cart#index'
   
   resources :items
   root 'static_pages#home'
@@ -17,8 +26,6 @@ Rails.application.routes.draw do
   
   get '/logout' => 'user#logout'
   
-  get '/cart' => 'cart#index'
-  
   get '/cart/:id' => 'cart#add'
   
   get '/clearcart' => 'cart#clearCart'
@@ -28,8 +35,6 @@ Rails.application.routes.draw do
   get '/decrease/:id' => 'cart#decrease'
   
   get '/increase/:id' => 'cart#increase'
-  
-  get '/checkout' => 'cart#createOrder'
   
   get '/done' => 'cart#done'
   

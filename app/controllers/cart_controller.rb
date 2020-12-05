@@ -87,20 +87,20 @@ class CartController < ApplicationController
       # Step three - Save each order item from the cart into the orderitems table 
       @cart = session[:cart] || {} # This gets the items from the users cart session
       @cart.each do | id, quantity |
-      item = Item.find_by_id(id)
-      @orderitem = @order.orderitems.build(:item_id => item.id, :title => item.title, :description => item.description, :quantity => quantity, :price => item.price)
-      @orderitem.save
+        item = Item.find_by_id(id)
+        @orderitem = @order.orderitems.build(:item_id => item.id, :title => item.title, :description => item.description, :quantity => quantity, :price => item.price)
+        @orderitem.save
       
-    end 
-  
- 
-  @orders = Order.all
-  @orderitems = Orderitem.where(order_id: Order.last)
+      end 
+    
+    @orders = Order.all
+    @orderitems = Orderitem.where(order_id: Order.last)
+    session[:cart] = nil
  
   #<% @orderitems.each do |id, quantity| %>
  
   #redirect_to '/done'
   #redirect_to :action => :done
-  end   
+    end   
  
 end
