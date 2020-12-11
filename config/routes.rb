@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   
   get '/products' => 'items#index'
   
+  post '/search' => 'items#search'
+  
   get '/login' => 'user#login' 
   
   get '/logout' => 'user#logout'
