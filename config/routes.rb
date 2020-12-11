@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   
   get '/checkout' => 'cart#createOrder'
   
+  get '/paid/:id' => 'static_pages#paid'
+  
   get '/cart' => 'cart#index'
   
   resources :items
