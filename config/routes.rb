@@ -18,6 +18,13 @@ Rails.application.routes.draw do
   
   get '/cart' => 'cart#index'
   
+  get '/allusers' => 'static_pages#allusers'
+  
+  get '/upgrade/:id' => 'static_pages#upgrade'
+
+  get '/downgrade/:id' => 'static_pages#downgrade'
+
+  
   resources :items
   root 'static_pages#home'
 
