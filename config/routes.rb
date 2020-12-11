@@ -1,6 +1,7 @@
   
 Rails.application.routes.draw do
   
+  resources :categories
   resources :orders do 
     resources:orderitems
   end
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
     resources :orders 
   end
   
+  get 'category/:title', to: 'static_pages#category'
+
   get '/checkout' => 'cart#createOrder'
   
   get '/paid/:id' => 'static_pages#paid'
