@@ -15,6 +15,10 @@ class StaticPagesController < ApplicationController
     @users = User.all
   end
   
+  def suppliers
+    @suppliers = Supplier.all
+  end
+  
   def upgrade
       @user = User.find_by(id: params[:id])
       @user.update_attribute(:admin, true)
@@ -39,8 +43,20 @@ class StaticPagesController < ApplicationController
   def paid
     # redirect_to "/cart/clear"
     flash[:notice] = 'Transaction Complete'
-    @order = Order.last
+    #@order = Order.last
+    @order = Order.find(params[:id])
     @order.update_attribute(:status , "Paid by User: #{current_user.email}")
+    #"Paid by User:#{current_user.id} #{current_user.name} #{current_user.surname}")
+    
+  end
+  
+  def paidByPayPal
+    # redirect_to "/cart/clear"
+    flash[:notice] = 'Transaction Complete'
+    #@order = Order.last
+    @order = Order.last
+    @order.update_attribute(:status , "Paid using PayPal by User: #{current_user.email}")
+    redirect_to "/cart"
     #"Paid by User:#{current_user.id} #{current_user.name} #{current_user.surname}")
     
   end

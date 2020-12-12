@@ -1,6 +1,7 @@
   
 Rails.application.routes.draw do
   
+  resources :suppliers
   resources :categories
   resources :orders do 
     resources:orderitems
@@ -16,9 +17,13 @@ Rails.application.routes.draw do
   
   get '/paid/:id' => 'static_pages#paid'
   
+   get '/paidbypaypal' => 'static_pages#paidByPayPal'
+  
   get '/cart' => 'cart#index'
   
   get '/allusers' => 'static_pages#allusers'
+  
+  get '/suppliers' => 'static_pages#suppliers'
   
   get '/upgrade/:id' => 'static_pages#upgrade'
 
