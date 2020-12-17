@@ -25,7 +25,8 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails', groups: [:development, :test]
-
+gem 'social-share-button', '0.2.1'
+gem 'shareable'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
