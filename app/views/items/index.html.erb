@@ -12,7 +12,7 @@
        
        <%= link_to (image_tag item.image_url, :class => "itemholsIm"), item %>
         <p><%= item.description %></p>
-        <p><%= render_shareable %></p>
+        <%= render_shareable :buttons=> ['facebook', 'twitter']%>
        <p>Price <%= number_to_currency(item.price, :unit => "€") %>
        <br>
         Category: <%= item.category %>

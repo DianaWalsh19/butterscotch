@@ -13,6 +13,9 @@
         Category: <%= @item.category %>
         <br>
         Brand: <%= @item.brand %></p>
+        
+       <%= render_shareable :buttons=> ['facebook', 'twitter']%>
+       
        
        <p>
          <%= link_to 'Back',  items_path, :class => "button", :role => "button" %>
