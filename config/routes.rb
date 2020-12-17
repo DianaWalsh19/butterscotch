@@ -7,9 +7,11 @@ Rails.application.routes.draw do
     resources:orderitems
   end
   
-  devise_for :users do 
-    resources :orders 
-  end
+  #devise_for :users do 
+    #resources :orders 
+  #end
+  
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   
   get 'category/:title', to: 'static_pages#category'
 
