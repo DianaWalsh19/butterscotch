@@ -10,6 +10,7 @@ class SuppliersController < ApplicationController
   # GET /suppliers/1
   # GET /suppliers/1.json
   def show
+    @suppliers = Supplier.where(supplier_id: params[:id])
   end
 
   # GET /suppliers/new

@@ -19,18 +19,21 @@ Rails.application.routes.draw do
   
   get '/paid/:id' => 'static_pages#paid'
   
-   get '/paidbypaypal' => 'static_pages#paidByPayPal'
+  get '/paidbypaypal' => 'static_pages#paidByPayPal'
   
   get '/cart' => 'cart#index'
   
   get '/allusers' => 'static_pages#allusers'
   
-  get '/suppliers' => 'static_pages#suppliers'
+  get '/suppliers' => 'suppliers#suppliers'
   
-  get '/upgrade/:id' => 'static_pages#upgrade'
+  get '/makeAdmin/:id' => 'static_pages#makeAdmin'
 
-  get '/downgrade/:id' => 'static_pages#downgrade'
+  get '/removeAdmin/:id' => 'static_pages#removeAdmin'
+  
+  get '/makeStaff/:id' => 'static_pages#makeStaff'
 
+  get '/removeStaff/:id' => 'static_pages#removeStaff'
   
   resources :items
   root 'static_pages#home'
