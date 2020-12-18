@@ -1,12 +1,22 @@
 class SuppliersController < ApplicationController
+  
+  before_action :is_staff_or_admin?
+  
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /suppliers
   # GET /suppliers.json
   def index
     @suppliers = Supplier.all
   end
-
+  
+  def is_staff_or_admin?
+      # check if user is a admin
+      # if not admin then redirect to where ever you want 
+      flash[:error] = "You must admin or staff in to access this section"
+      redirect_to root_path unless current_user && current_user.staff? || current_user && current_user.admin 
+  end
+    
   # GET /suppliers/1
   # GET /suppliers/1.json
   def show

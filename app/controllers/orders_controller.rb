@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  
+  before_action :is_admin?
+  
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -6,6 +9,13 @@ class OrdersController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @orders = @user.orders.all
+  end
+  
+  def is_admin?
+      # check if user is a admin
+      # if not admin then redirect to where ever you want 
+      flash[:error] = "You must be admin to access this section"
+      redirect_to root_path unless current_user && current_user.admin
   end
 
   # GET /orders/1
