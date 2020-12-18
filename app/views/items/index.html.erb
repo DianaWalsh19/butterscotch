@@ -22,15 +22,16 @@
        <p>
         
          <a href="/cart/<%= item.id %>" class="button">Add To Cart</a>
-         <% if user_signed_in? %>
-         <%= link_to 'Show',  item, :class => "button", :role => "button" %>
-         <%= link_to 'Edit',  edit_item_path(item), :class => "button", :role => "button" %>
-         <%= link_to 'Destroy',  item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button", :role => "button" %>
-        
-        <% else %>
-         <%= link_to 'Show',  item, :class => "button", :role => "button" %> 
-        
-        <% end %>
+         <% if current_user && current_user.admin? %>
+          <%= link_to 'Show',  item, :class => "button", :role => "button" %>
+          <%= link_to 'Edit',  edit_item_path(item), :class => "button", :role => "button" %>
+          <%= link_to 'Destroy',  item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button", :role => "button" %>
+         <% elsif current_user && current_user.staff? %>
+          <%= link_to 'Show',  item, :class => "button", :role => "button" %>
+          <%= link_to 'Edit',  edit_item_path(item), :class => "button", :role => "button" %>
+         <% else %>
+          <%= link_to 'Show',  item, :class => "button", :role => "button" %> 
+         <% end %>
        
        </p>
        
@@ -39,6 +40,6 @@
       
    </div>
 
-<% if user_signed_in? %>
+<% if current_user && current_user.admin? %>
  <%= render '/items/addProduct' %>
 <% end %>

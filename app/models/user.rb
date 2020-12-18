@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :rememberable, :omniauthable, omniauth_providers: [:google_oauth2]
          
+  def username
+    return self.email.split('@')[0].capitalize
+  end
+  
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :remember_me)
   end

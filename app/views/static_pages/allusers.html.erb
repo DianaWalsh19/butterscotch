@@ -10,10 +10,12 @@
             <h1>Admin: <%= user.admin %></h1>
             <h1>Staff: <%= user.staff %></h1>
             <h1>Password: <%= user.password %></h1>
-            <p><a href="/makeAdmin/<%= user.id %>" class="button">Make Admin</a></p>
-            <p><a href="/removeAdmin/<%= user.id %>" class="button">Remove Admin</a></p>
-            <p><a href="/makeStaff/<%= user.id %>" class="button">Make Staff</a></p>
-            <p><a href="/removeStaff/<%= user.id %>" class="button">Remove Staff</a></p>
+            <% if current_user && current_user.admin? %>
+                <p><a href="/makeAdmin/<%= user.id %>" class="button">Make Admin</a></p>
+                <p><a href="/removeAdmin/<%= user.id %>" class="button">Remove Admin</a></p>
+                <p><a href="/makeStaff/<%= user.id %>" class="button">Make Staff</a></p>
+                <p><a href="/removeStaff/<%= user.id %>" class="button">Remove Staff</a></p>
+            <% end %>
         </div>
        
     <% end %>
