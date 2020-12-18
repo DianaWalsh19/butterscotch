@@ -23,17 +23,17 @@ Rails.application.routes.draw do
   
   get '/cart' => 'cart#index'
   
-  get '/allusers' => 'static_pages#allusers'
-  
   get '/suppliers' => 'suppliers#suppliers'
   
-  get '/makeAdmin/:id' => 'static_pages#makeAdmin'
-
-  get '/removeAdmin/:id' => 'static_pages#removeAdmin'
+  get '/allusers' => 'user#allusers'
   
-  get '/makeStaff/:id' => 'static_pages#makeStaff'
+  get '/makeAdmin/:id' => 'user#makeAdmin'
 
-  get '/removeStaff/:id' => 'static_pages#removeStaff'
+  get '/removeAdmin/:id' => 'user#removeAdmin'
+  
+  get '/makeStaff/:id' => 'user#makeStaff'
+
+  get '/removeStaff/:id' => 'user#removeStaff'
   
   resources :items
   root 'static_pages#home'

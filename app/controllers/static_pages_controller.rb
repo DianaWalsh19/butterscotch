@@ -11,38 +11,9 @@ class StaticPagesController < ApplicationController
   def contact
   end
   
-  def allusers
-    @users = User.all
-  end
-  
   def suppliers
     @suppliers = Supplier.all
   end
-  
-  def makeAdmin
-      @user = User.find_by(id: params[:id])
-      @user.update_attribute(:admin, true)
-      redirect_to :action => :allusers
-  end
-  
-  def removeAdmin
-      @user = User.find_by(id: params[:id])
-      @user.update_attribute(:admin, false)
-      redirect_to :action => :allusers
-  end    
-  
-  def makeStaff
-      @user = User.find_by(id: params[:id])
-      @user.update_attribute(:staff, true)
-      redirect_to :action => :allusers
-  end
-  
-  def removeStaff
-      @user = User.find_by(id: params[:id])
-      @user.update_attribute(:staff, false)
-      redirect_to :action => :allusers
-  end    
-
 
   def category
     catName = params[:title]
