@@ -1,13 +1,21 @@
-<h1>Categories</h1>
-<br>
+<div id="itemsContainer">
+  
+  <h1>Categories</h1>
 
-<% @categories.each do |category| %>
-    <div class="itemhols">
-       <p><%= category.title %></p>
-       <%= link_to (image_tag category.image, :class=>"itemholsIm"), category.title %>
-       <p><%= category.description %></p>
-     </div>
-
-    <p><a href="/category/<%= category.title %>" class="button"><%= category.title %></a></p>
-
-<% end %>
+  <tbody>
+    <% @categories.each do |category| %>
+      <div class="itemhols">
+        <h1><%= category.title %></h1>
+        <%= link_to (image_tag category.image, :class => "itemholsIm"), category %>
+        <p><%= category.description %></p>
+        <p>
+            <a href="/category/<%= category.title %>" class="button"><%= category.title %></a>
+            <% if current_user && current_user.admin? || current_user && current_user.staff? %>
+                <%= link_to 'Edit',  edit_category_path(category), :class => "button", :role => "button" %>
+                <%= link_to 'Destroy',  category, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button", :role => "button" %>
+            <% end %>
+        </p>
+      </div>
+    <% end %>
+  </tbody>
+</div>

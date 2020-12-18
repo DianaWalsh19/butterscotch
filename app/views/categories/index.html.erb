@@ -2,27 +2,9 @@
 
 <p id="notice"><%= notice %></p>
 
-<div id="itemsContainer">
-  
-  <h1>Categories</h1>
-
-  <tbody>
-    <% @categories.each do |category| %>
-      <div class="itemhols">
-        <h1><%= category.title %></h1>
-        
-        <p>
-          <%= link_to (image_tag category.image, :class => "itemholsIm"), category %>
-          <p><%= category.description %></p>
-          <%= link_to 'Show',  category, :class => "button", :role => "button" %>
-          <%= link_to 'Edit',  edit_category_path(category), :class => "button", :role => "button" %>
-          <%= link_to 'Destroy',  category, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button", :role => "button" %>
-        </p>
-      </div>
-    <% end %>
-  </tbody>
-</table>
+<%=render 'layouts/categories'%>
 
 <br>
-
-<%= link_to 'New Category', new_category_path %>
+<% if current_user && current_user.admin? || current_user && current_user.staff? %>
+  <%= link_to 'New Category', new_category_path %>
+<% end %>
