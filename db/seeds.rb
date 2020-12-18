@@ -20,3 +20,9 @@ Supplier.create([
     { name: 'Radar', email: 'info@radar.com' },
     { name: 'The Moher Soap Co.', email: 'info@mohersoap.com' }
     ])
+    
+Category.create([
+    { title: 'Bakery', description: 'Join us for a freshly baked pastry and a wonderful cuppa.', image: 'site/scone.jpg'},
+    { title: 'Kitchen', description: 'Kitchen items for cooking lovers.', image: 'site/setOfSpiceBottles.jpg'},
+    { title: 'Bathroom', description: 'Environmentally friendly bathroom items. Perfect for a thoughtful gift.', image: 'site/moherSoap.jpg'}
+    ])
